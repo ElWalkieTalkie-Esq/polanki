@@ -1,0 +1,14 @@
+name: polanki
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - pip>=22.0
+  - setuptools>=42
+  - wheel
+  - pytest>=7.0.0
+  - black>=23.0.0
+  - mypy>=1.0.0
+  - pip:
+    - -r requirements.txt

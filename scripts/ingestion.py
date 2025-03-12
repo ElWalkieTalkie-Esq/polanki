@@ -5,6 +5,10 @@ from anki.collection import Collection
 from anki.notes import Note
 from anki.decks import DeckId
 from typing import List, Dict
+import json
+
+from polanki.llm import generate_example_sentence, validate_polish_sentence
+from polanki.enums import Level
 
 path_to_collection = """/Users/walkietalkie/Library/Application Support/Anki2/User 1/collection.anki2"""
 
@@ -46,8 +50,18 @@ for input_item in test_import:
         continue
     note = col.new_note(model)
     note['Front'] = input_item['front']
-    note['Back'] = input_item['back']   
-    note.tags = ['test']
+    note['Back'] = input_item['back']  
+    print("Generating Polish Sentence")
+    example_sentence = generate_example_sentence(Level.A2, input_item['front'])
+    # check if the sentence is grammatically correct
+    print("Validating Polish Sentence")
+    validation = validate_polish_sentence(example_sentence)
+    validation_json = json.loads(validation.choices[0].message.content)
+    if not validation_json["grammatically_correct"]:
+        example_sentence = validation_json["correct_sentence"]
+
+    note['ExamplePL'] = example_sentence
+    note.tags = ['']
     col.add_note(note, DeckId(deck_id))
     print("Added new note")
 

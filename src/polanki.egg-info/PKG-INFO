@@ -1,0 +1,26 @@
+Metadata-Version: 2.2
+Name: polanki
+Version: 0.1.0
+Summary: A Python project
+Author-email: El Walkie Talkie Esq <tom.walkington@pm.me>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: anki
+Requires-Dist: aqt
+Requires-Dist: keyring
+Requires-Dist: mistralai
+Requires-Dist: openai
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: isort>=5.12.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+
+# polanki
+
+* Bulk importing of Polish Words
+* Generating example sentences based on grammatical concepts learnted
+

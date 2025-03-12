@@ -6,3 +6,6 @@
 # mypy>=1.0.0
 anki # Anki's main package
 aqt # Anki's GUI toolkit
+keyring 
+mistralai
+openai
